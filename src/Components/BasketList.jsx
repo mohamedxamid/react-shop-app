@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import BasketItem from "./BasketItem";
 import { GrClose } from "react-icons/gr";
+import { ShopContext } from "../context";
 
-const BasketList = ({
-  order = [],
-  handleBasketShow = Function.prototype,
-  removeItem = Function.prototype,
-  incrementQuantity,
-  decrementQuantity,
-}) => {
+const BasketList = () => {
+  const { order = [], handleBasketShow = Function.prototype } =
+    useContext(ShopContext);
+
   const totalPrice = order.reduce((sum, el) => {
     return sum + el.price * el.quantity;
   }, 0);
@@ -25,15 +23,7 @@ const BasketList = ({
           <GrClose className="cursor-pointer" onClick={handleBasketShow} />
         </li>
         {order.length ? (
-          order.map((item) => (
-            <BasketItem
-              key={item.id}
-              {...item}
-              removeItem={removeItem}
-              incrementQuantity={incrementQuantity}
-              decrementQuantity={decrementQuantity}
-            />
-          ))
+          order.map((item) => <BasketItem key={item.id} {...item} />)
         ) : (
           <li className="w-full bg-gray-800 py-2 px-4">Basket is empty</li>
         )}

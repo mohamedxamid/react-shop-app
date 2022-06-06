@@ -1,13 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ShopContext } from "../context";
+import { toast } from "react-toastify";
 
-const GoodItem = ({
-  id,
-  name,
-  description,
-  price,
-  full_background,
-  addToBasket,
-}) => {
+const GoodItem = ({ id, name, description, price, full_background }) => {
+  const { addToBasket } = useContext(ShopContext);
+
   return (
     <div className="shadow-xl flex flex-col rounded">
       <div className="min-h-[240px]">
@@ -20,7 +17,10 @@ const GoodItem = ({
       <div className="my-2 px-3 py-2 flex justify-between items-center border-t-2 border-green-300">
         <button
           className="bg-green-300 hover:bg-green-400 shadow-md px-3 py-1"
-          onClick={() => addToBasket({ id, name, price })}
+          onClick={() => {
+            addToBasket({ id, name, price });
+            toast.success("Good added to basket successfully!");
+          }}
         >
           BUY
         </button>
