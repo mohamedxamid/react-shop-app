@@ -12,7 +12,7 @@ const Cart = ({ quantity = 0 }) => {
     >
       <MdOutlineShoppingCart />
       {quantity ? (
-        <span className="absolute top-0 -right-2">{quantity}</span>
+        <span className="absolute top-0 right-1">{quantity}</span>
       ) : null}
     </div>
   );

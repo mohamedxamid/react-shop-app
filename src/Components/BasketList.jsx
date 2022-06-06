@@ -17,7 +17,7 @@ const BasketList = () => {
       id="modal"
       onClick={(e) => e.target.id === "modal" && handleBasketShow()}
     >
-      <ul className="w-2/4 mx-auto transition text-gray-400 shadow-lg">
+      <ul className="w-5/6 sm:w-3/4 md:w-2/4 mx-auto transition text-gray-400 shadow-lg">
         <li className="w-full bg-gray-700 py-2 px-4 rounded-t-lg font-semibold flex justify-between items-center">
           BASKET{" "}
           <GrClose className="cursor-pointer" onClick={handleBasketShow} />
